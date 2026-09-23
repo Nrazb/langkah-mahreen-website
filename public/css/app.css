@@ -1,0 +1,53 @@
+:root{--bg:#F5F1E8;--surface:#FBF9F4;--ink:#26231F;--muted:#5E564C;--line:#D9D0BF;--accent:#3F6150;--accent-ink:#FFFFFF;--r:6px;--r-lg:12px}
+@media (prefers-color-scheme:dark){:root:not([data-tema="light"]){--bg:#1D1B18;--surface:#26231F;--ink:#ECE6DA;--muted:#B0A797;--line:#3D382F;--accent:#9DBBA6;--accent-ink:#1D1B18}}
+:root[data-tema="dark"]{--bg:#1D1B18;--surface:#26231F;--ink:#ECE6DA;--muted:#B0A797;--line:#3D382F;--accent:#9DBBA6;--accent-ink:#1D1B18}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.65 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.2;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+.narrow{max-width:40rem}
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem;min-height:4rem}
+.brand{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;text-decoration:none;margin-right:auto}
+nav.main{display:flex;gap:.25rem}
+nav.main a,.tema{min-height:44px;display:inline-flex;align-items:center;padding:0 .75rem;text-decoration:none;border-radius:var(--r);color:var(--muted)}
+nav.main a:hover,nav.main a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-underline-offset:.35em}
+.tema{background:none;border:1px solid var(--line);font:inherit;cursor:pointer;color:var(--muted)}
+.tema[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+main{padding:3.5rem 0 5rem}
+.hero{display:grid;gap:2rem;padding-top:1.5rem}
+.hero h1{font-size:clamp(2.4rem,7vw,4.75rem);max-width:14ch;letter-spacing:-.01em}
+.hero p{max-width:34rem;color:var(--muted);font-size:1.15rem;margin:0}
+.aksi{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 1.5rem;background:var(--accent);color:var(--accent-ink);border-radius:var(--r);text-decoration:none;font-weight:600}
+.btn:hover{filter:brightness(1.08)}
+.tautan{min-height:44px;display:inline-flex;align-items:center;text-underline-offset:.3em}
+.catatan{border:1px dashed var(--line);border-radius:var(--r);padding:.75rem 1rem;color:var(--muted);font-size:.95rem;max-width:34rem}
+.langkah .n{color:var(--muted);margin:0 0 1rem}
+.langkah h1{font-size:clamp(1.7rem,4.5vw,2.5rem);margin-bottom:2rem}
+.pilihan{list-style:none;margin:0 0 2rem;padding:0;display:grid;gap:.75rem}
+.pilihan a{display:block;padding:1.1rem 1.25rem;min-height:56px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);text-decoration:none;transition:border-color .15s}
+.pilihan a:hover{border-color:var(--accent)}
+.galat,.kosong{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1.5rem}
+.hasil{display:grid;gap:2.5rem;margin-bottom:4rem}
+.hasil h1{font-size:clamp(2rem,5.5vw,3.5rem)}
+.hasil .lbl{color:var(--muted);margin:0 0 .75rem}
+.hasil .kedua{border-top:1px solid var(--line);padding-top:1.25rem;margin-top:1.5rem}
+.hasil .kedua h2{font-size:1.4rem;margin-bottom:.25rem}
+h2.bagian{font-size:1.75rem;margin-bottom:1.75rem}
+.bulan{font-size:1.15rem;color:var(--muted);margin:2rem 0 1rem}
+.jalur{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:2px dotted var(--line)}
+.jalur li{position:relative;padding-bottom:1.5rem}
+.jalur li::before{content:"";position:absolute;left:calc(-1.5rem - 6px);top:.6rem;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.jalur .tgl{color:var(--muted);font-size:.95rem;margin:0}
+.jalur h3{font-size:1.25rem;margin:.1rem 0 .2rem}
+.jalur .bd{font-size:.95rem;color:var(--muted)}
+.filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0 1rem;padding:0;list-style:none}
+.filter a{display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;border:1px solid var(--line);border-radius:var(--r);text-decoration:none}
+.filter a[aria-current="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:1.5rem 0;color:var(--muted);font-size:.95rem}
+@media(min-width:56rem){.hasil{grid-template-columns:1.4fr 1fr;gap:4rem}.hero{padding-top:3rem}main{padding-top:4.5rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
