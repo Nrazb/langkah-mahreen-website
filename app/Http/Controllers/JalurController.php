@@ -11,7 +11,7 @@ class JalurController extends Controller
 {
     public function beranda()
     {
-        return view('beranda');
+        return view('beranda', ['bidang' => Bidang::orderBy('id')->get(), 'jmlProgram' => Program::count(), 'jmlTanya' => Simpul::count()]);
     }
 
     public function langkah(Request $r)
@@ -28,7 +28,7 @@ class JalurController extends Controller
             return redirect()->route('hasil', ['p' => implode(',', $ids)]);
         }
 
-        return view('langkah', ['kosong' => false, 'simpul' => $t['simpul'], 'ids' => $ids]);
+        return view('langkah', ['kosong' => false, 'simpul' => $t['simpul'], 'ids' => $ids, 'total' => $this->kedalaman(Simpul::where('is_start', true)->value('id'))]);
     }
 
     public function hasil(Request $r)
@@ -68,6 +68,16 @@ class JalurController extends Controller
             ->orderBy('mulai')->get();
 
         return view('kalender', compact('semua', 'programs', 'slug'));
+    }
+
+    private function kedalaman(int $id, int $batas = 0): int
+    {
+        $s = Simpul::with('pilihan')->find($id);
+        if (! $s || $batas > 10) {
+            return 0;
+        }
+
+        return 1 + $s->pilihan->map(fn ($p) => $p->next_simpul_id ? $this->kedalaman($p->next_simpul_id, $batas + 1) : 0)->max();
     }
 
     private function jalur(Request $r): array
